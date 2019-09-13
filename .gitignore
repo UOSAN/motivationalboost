@@ -128,3 +128,6 @@ dmypy.json
 
 # PyCharm
 .idea/
+
+# Ignore application configuration file
+config.json
