@@ -63,3 +63,15 @@ class QualtricsQuery():
             return r.json()
         else:
             raise ValueError('Could not get JSON response of surveys')
+
+    def qualtrics_get_survey(self):
+        """
+        Get survey definition, to create mapping for questions that use choices or enumerations
+        :return: A string in JSON format containing the survey definition
+        """
+        url = f'{self._endpoint}/survey-definitions/{self._survey_id}'
+        r = requests.get(url=url, headers=self._headers, timeout=self._timeout)
+        if r.status_code == requests.codes.ok:
+            return r.json()
+        else:
+            raise ValueError('Could not get survey definition')
