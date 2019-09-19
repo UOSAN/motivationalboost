@@ -10,7 +10,7 @@ class QualtricsQuery():
         self._timeout = 5
         self._survey_id = survey_id
 
-    def qualtrics_create_response_export(self) -> Optional[str]:
+    def create_response_export(self) -> Optional[str]:
         """
         Create a survey export from Qualtrics
         :return: A progress identifier
@@ -23,7 +23,7 @@ class QualtricsQuery():
             export_progress_id = r.json()['result']['progressId']
         return export_progress_id
 
-    def qualtrics_get_response_export_progress(self, export_progress_id: Optional[str]) -> Optional[str]:
+    def get_response_export_progress(self, export_progress_id: Optional[str]) -> Optional[str]:
         """
         Get the fileId of the survey export, by repeatedly querying for progress until the status is complete
         :param export_progress_id: A progress identifier
@@ -47,7 +47,7 @@ class QualtricsQuery():
 
         return file_id
 
-    def qualtrics_get_response_export_file(self, file_id: str):
+    def get_response_export_file(self, file_id: str):
         """
         Get the exported survey results
         :param file_id: File identifier of the exported survey
@@ -64,7 +64,7 @@ class QualtricsQuery():
         else:
             raise ValueError('Could not get JSON response of surveys')
 
-    def qualtrics_get_survey(self):
+    def get_survey_definition(self):
         """
         Get survey definition, to create mapping for questions that use choices or enumerations
         :return: A string in JSON format containing the survey definition
