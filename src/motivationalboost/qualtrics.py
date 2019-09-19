@@ -20,13 +20,18 @@ class QualtricsQuery():
         r = requests.post(url=url, json=request_data, headers=self._headers, timeout=self._timeout)
         export_progress_id = None
         if r.status_code == requests.codes.ok:
-            export_progress_id = r.json()['result']['progressId']
+            try:
+                export_progress_id = r.json()['result']['progressId']
+            except KeyError:
+                # Explicitly do nothing for a KeyError. Should be able to handle not getting a progress identifier.
+                pass
         return export_progress_id
 
-    def get_response_export_progress(self, export_progress_id: Optional[str]) -> Optional[str]:
+    def get_response_export_progress(self, export_progress_id: Optional[str], max_retries: int = 10) -> Optional[str]:
         """
         Get the fileId of the survey export, by repeatedly querying for progress until the status is complete
         :param export_progress_id: A progress identifier
+        :param max_retries: Maximum number of retries to check progress. Used only for testing.
         :return: A file identifier
         """
         if not export_progress_id:
@@ -34,9 +39,8 @@ class QualtricsQuery():
 
         url = f'{self._endpoint}/surveys/{self._survey_id}/export-responses/{export_progress_id}'
         r = requests.get(url=url, headers=self._headers, timeout=self._timeout)
-        max_count = 10
         count = 0
-        while r.status_code == requests.codes.ok and r.json()['result']['status'] != 'complete' and count < max_count:
+        while r.status_code == requests.codes.ok and r.json()['result']['status'] != 'complete' and count < max_retries:
             sleep(1)
             r = requests.get(url=url, headers=self._headers)
             count += 1
