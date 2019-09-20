@@ -1,5 +1,5 @@
 from typing import List
-from src.motivationalboost.apptoto_participant import ApptotoParticipant
+from apptoto_participant import ApptotoParticipant
 
 
 class ApptotoEvent:
