@@ -2,7 +2,7 @@ import requests
 import jsonpickle
 from requests.auth import HTTPBasicAuth
 from typing import List
-from .apptoto_event import ApptotoEvent
+from apptoto_event import ApptotoEvent
 
 
 class Apptoto:
