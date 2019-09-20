@@ -1,6 +1,6 @@
 import pytest
 import requests
-from src.motivationalboost.qualtrics import QualtricsQuery
+from qualtrics import QualtricsQuery
 
 
 _endpoint = 'https://ca1.qualtrics.com/API/v3'

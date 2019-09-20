@@ -1,5 +1,5 @@
 import datetime
-from src.motivationalboost.parse_date_time import parse_datetime_string
+from parse_date_time import parse_datetime_string
 
 
 class TestParseDateTime:
