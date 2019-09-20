@@ -1,3 +1,4 @@
+import datetime
 import requests
 from time import sleep
 from typing import Optional
@@ -16,7 +17,8 @@ class QualtricsQuery():
         :return: A progress identifier
         """
         url = f'{self._endpoint}/surveys/{self._survey_id}/export-responses'
-        request_data = {'format': 'json', 'compress': 'false'}
+        start_date =  datetime.datetime.now().replace(tzinfo=datetime.timezone.utc).isoformat(timespec='seconds')
+        request_data = {'format': 'json', 'compress': 'false', 'startDate': start_date}
         r = requests.post(url=url, json=request_data, headers=self._headers, timeout=self._timeout)
         export_progress_id = None
         if r.status_code == requests.codes.ok:
