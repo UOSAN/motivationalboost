@@ -1,7 +1,8 @@
 import json
-from typing import List
-from message import Message
 import os
+from typing import List, Set
+
+from message import Message
 
 
 class MessageContainer:
@@ -23,3 +24,14 @@ class MessageContainer:
 
     def get_messages(self) -> List[Message]:
         return self._container
+
+    def get_placeholders(self) -> Set[str]:
+        """
+        Get all the placeholders in all the messages
+        :return: a set of the placeholder strings
+        """
+        placeholders = set()
+        for m in self._container:
+            placeholders = placeholders | set(m.get_placeholders())
+
+        return placeholders
