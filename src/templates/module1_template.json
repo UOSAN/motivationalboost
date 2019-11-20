@@ -22,10 +22,10 @@
       "title": "Session 2 (Early Labor - part 1)"
     },
     {
-      "content": "Hi ${QID03}, April here. Just want to let you know I'm looking forward to chatting with you about Early Labor tomorrow at at ${QID48} on ${QID47}. See you soon!",
+      "content": "Hi ${QID03}, April here. Just want to let you know I'm looking forward to chatting with you about Early Labor tomorrow at ${QID48} on ${QID47}. See you soon!",
       "schedule": "-1d",
       "start_date": "${QID47}",
-      "start_time": "16:00",
+      "start_time": "4:00pm",
       "title": "Boost Schedule Summary 2"
     }
   ]
