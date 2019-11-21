@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 from string import Template
 from typing import List, Mapping
 
-from src.motivationalboost.parse_date_time import parse_datetime_string
+from parse_date_time import parse_datetime_string
 
 
 class Message:
