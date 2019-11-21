@@ -130,4 +130,4 @@ dmypy.json
 .idea/
 
 # Ignore application configuration file
-config.json
+instance/
