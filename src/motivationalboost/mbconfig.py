@@ -11,3 +11,4 @@ class MBConfig:
             self.qualtrics_api_token = configuration['qualtrics_api_token']
             self.apptoto_api_token = configuration['apptoto_api_token']
             self.apptoto_user = configuration['apptoto_user']
+            self.survey_id = configuration['survey_id']
