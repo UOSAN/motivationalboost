@@ -81,3 +81,17 @@ class QualtricsQuery():
             return r.json()
         else:
             raise ValueError('Could not get survey definition')
+
+    def get_survey_response(self, response_id: str):
+        """
+        Get a single survey result
+        :param response_id: Response identifier for a single response
+        :return:  A string in JSON format containing a single survey response
+        """
+        # No type hints on the return value of get_survey_response because it is a big blob of JSON.
+        url = f'{self._endpoint}/surveys/{self._survey_id}/responses/{response_id}'
+        r = requests.get(url=url, headers=self._headers, timeout=self._timeout)
+        if r.status_code == requests.codes.ok:
+            return r.json()
+        else:
+            raise ValueError(f'Could not get JSON response from survey with responseID: \'{response_id}\'')
