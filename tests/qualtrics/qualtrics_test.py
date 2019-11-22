@@ -3,9 +3,10 @@ import requests
 from qualtrics import QualtricsQuery
 
 
-_endpoint = 'https://ca1.qualtrics.com/API/v3'
-_survey_id = 'test_survey_id'
 _api_token = 'test_api_token'
+_endpoint = 'https://ca1.qualtrics.com/API/v3'
+_response_id = 'test_response_id'
+_survey_id = 'test_survey_id'
 
 
 class TestQualtricsQuery:
@@ -148,3 +149,26 @@ class TestQualtricsQuery:
         with pytest.raises(ValueError):
             # Act
             q.get_survey_definition()
+
+    def test_get_survey_response_success(self, requests_mock):
+        # Arrange
+        q = QualtricsQuery(api_token=_api_token, survey_id=_survey_id)
+        url = f'{_endpoint}/surveys/{_survey_id}/responses/{_response_id}'
+        requests_mock.get(url=url, status_code=requests.codes.ok, json={'a': 'b'})
+
+        # Act
+        survey_response = q.get_survey_response(_response_id)
+
+        # Assert
+        assert survey_response == {'a': 'b'}
+
+    def test_get_survey_response_failure(self, requests_mock):
+        # Arrange
+        q = QualtricsQuery(api_token=_api_token, survey_id=_survey_id)
+        url = f'{_endpoint}/surveys/{_survey_id}/responses/{_response_id}'
+        requests_mock.get(url=url, status_code=requests.codes.bad_request)
+
+        # Assert
+        with pytest.raises(ValueError):
+            # Act
+            q.get_survey_response(_response_id)

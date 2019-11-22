@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from src.motivationalboost.message import Message
+from message import Message
 
 
 class TestMessage:
