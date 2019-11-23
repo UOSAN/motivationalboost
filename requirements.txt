@@ -1,3 +1,4 @@
 requests==2.22.0
 jsonpickle
 flask
+-r tests/requirements.txt
