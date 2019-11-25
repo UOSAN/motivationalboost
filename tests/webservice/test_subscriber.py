@@ -8,11 +8,12 @@ _response_id = 'test_response_id'
 _survey_id = 'test_survey_id'
 
 
-def test_event_subscriber_bad_data(app):
+def test_event_subscriber_bad_request(app):
+    # Verify that 400 Bad Request is returned on a bad request
     with app.app_context():
         client = app.test_client()
         response = client.post('/response', data={'a': 'b'})
-        assert response.status == '200 OK'
+        assert response.status == '400 BAD REQUEST'
 
 
 def test_event_subscriber_invalid_response_id(app, requests_mock):
