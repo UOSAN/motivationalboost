@@ -1,4 +1,8 @@
+from datetime import datetime
+
 import requests
+from dateutil import tz
+
 from apptoto import Apptoto
 from apptoto_event import ApptotoEvent
 
@@ -12,7 +16,8 @@ class TestApptoto:
         # Arrange
         a = Apptoto(api_token=_api_token, user=_user)
         url = f'{_endpoint}/events'
-        events = [ApptotoEvent(calendar='', title='', start_time='', end_time='', content='', participants=[])]
+        now = datetime.now(tz=tz.gettz('America/Los_Angeles'))
+        events = [ApptotoEvent(calendar='', title='', start_time=now, end_time=now, content='', participants=[])]
         requests_mock.post(url=url,
                            status_code=requests.codes.ok)
 
@@ -28,7 +33,8 @@ class TestApptoto:
         # Arrange
         a = Apptoto(api_token=_api_token, user=_user)
         url = f'{_endpoint}/events'
-        events = [ApptotoEvent(calendar='', title='', start_time='', end_time='', content='', participants=[])]
+        now = datetime.now(tz=tz.gettz('America/Los_Angeles'))
+        events = [ApptotoEvent(calendar='', title='', start_time=now, end_time=now, content='', participants=[])]
         requests_mock.post(url=url,
                            status_code=requests.codes.bad_request)
 
