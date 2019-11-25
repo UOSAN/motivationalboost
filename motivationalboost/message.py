@@ -1,5 +1,6 @@
 import re
 from datetime import datetime, timedelta
+from dateutil import tz
 from string import Template
 from typing import List, Mapping
 
@@ -43,11 +44,11 @@ class Message:
     def get_message_time(self) -> datetime:
         """
         Get the date time that the message should be sent
-        :return: a datetime
+        :return: a datetime in the 'America/Los_Angeles' timezone
         """
         if self._schedule_template == '' or self._schedule_template == 'now':
             # TODO: Perhaps delay the "now" response by a few minutes to make sure it can get scheduled and sent
-            return datetime.now()
+            return datetime.now(tz=tz.gettz('America/Los_Angeles'))
         else:
             start_date_time = f'{self._start_date_template.substitute(self._placeholders)} ' \
                               f'{self._start_time_template.substitute(self._placeholders)}'

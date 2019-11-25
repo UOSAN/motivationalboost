@@ -1,4 +1,5 @@
 from datetime import datetime
+from dateutil import tz
 
 from message import Message
 
@@ -58,7 +59,7 @@ class TestMessage:
         m.set_placeholders(placeholders=placeholders)
 
         # Expected time is two hours before start_time, because of the relative offset from schedule
-        expected = datetime(year=2019, month=8, day=4, hour=14, minute=30)
+        expected = datetime(year=2019, month=8, day=4, hour=14, minute=30, tzinfo=tz.gettz('America/Los_Angeles'))
 
         assert m.get_message_time() == expected
 
@@ -72,7 +73,7 @@ class TestMessage:
         m.set_placeholders(placeholders=placeholders)
 
         # Verify that message_time is essentially now.
-        expected = datetime.now()
+        expected = datetime.now(tz=tz.gettz('America/Los_Angeles'))
 
         assert (m.get_message_time() - expected).microseconds < 1000
 
@@ -86,5 +87,5 @@ class TestMessage:
         m.set_placeholders(placeholders=placeholders)
 
         # Verify that message_time is essentially now.
-        expected = datetime.now()
+        expected = datetime.now(tz=tz.gettz('America/Los_Angeles'))
         assert (m.get_message_time() - expected).microseconds < 1000
