@@ -1,7 +1,7 @@
 from datetime import datetime
 from typing import List
 
-from apptoto_participant import ApptotoParticipant
+from .apptoto_participant import ApptotoParticipant
 
 
 class ApptotoEvent:

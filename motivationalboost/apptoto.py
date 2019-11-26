@@ -1,8 +1,10 @@
-import requests
-import jsonpickle
-from requests.auth import HTTPBasicAuth
 from typing import List
-from apptoto_event import ApptotoEvent
+
+import jsonpickle
+import requests
+from requests.auth import HTTPBasicAuth
+
+from .apptoto_event import ApptotoEvent
 
 
 class Apptoto:

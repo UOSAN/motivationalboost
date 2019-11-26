@@ -4,7 +4,7 @@ from dateutil import tz
 from string import Template
 from typing import List, Mapping
 
-from parse_date_time import parse_datetime_string
+from .parse_date_time import parse_datetime_string
 
 
 class Message:

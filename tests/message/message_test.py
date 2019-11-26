@@ -1,7 +1,7 @@
 from datetime import datetime
 from dateutil import tz
 
-from message import Message
+from motivationalboost.message import Message
 
 
 class TestMessage:

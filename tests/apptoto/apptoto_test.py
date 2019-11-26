@@ -3,8 +3,8 @@ from datetime import datetime
 import requests
 from dateutil import tz
 
-from apptoto import Apptoto
-from apptoto_event import ApptotoEvent
+from motivationalboost.apptoto import Apptoto
+from motivationalboost.apptoto_event import ApptotoEvent
 
 _endpoint = 'https://api.apptoto.com/v1'
 _api_token = 'test_api_token'

@@ -1,6 +1,8 @@
 from datetime import datetime
+
 from dateutil import tz
-from parse_date_time import parse_datetime_string
+
+from motivationalboost.parse_date_time import parse_datetime_string
 
 
 class TestParseDateTime:

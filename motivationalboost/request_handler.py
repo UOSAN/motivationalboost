@@ -1,11 +1,11 @@
 from typing import Set, Mapping
 
-from mbconfig import MBConfig
-from qualtrics import QualtricsQuery
-from apptoto import Apptoto
-from apptoto_event import ApptotoEvent
-from apptoto_participant import ApptotoParticipant
-from message_container import MessageContainer
+from .mbconfig import MBConfig
+from .qualtrics import QualtricsQuery
+from .apptoto import Apptoto
+from .apptoto_event import ApptotoEvent
+from .apptoto_participant import ApptotoParticipant
+from .message_container import MessageContainer
 
 VALUES = 'values'
 LABELS = 'labels'
