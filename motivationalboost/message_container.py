@@ -2,7 +2,7 @@ import json
 import os
 from typing import List, Set
 
-from message import Message
+from .message import Message
 
 
 class MessageContainer:

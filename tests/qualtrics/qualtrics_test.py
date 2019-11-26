@@ -1,7 +1,7 @@
 import pytest
 import requests
-from qualtrics import QualtricsQuery
 
+from motivationalboost.qualtrics import QualtricsQuery
 
 _api_token = 'test_api_token'
 _endpoint = 'https://ca1.qualtrics.com/API/v3'

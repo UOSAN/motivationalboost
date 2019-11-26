@@ -1,6 +1,6 @@
 import shutil
 
-from message_container import MessageContainer
+from motivationalboost.message_container import MessageContainer
 
 
 class TestMessageContainer:

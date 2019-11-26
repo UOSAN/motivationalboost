@@ -1,4 +1,5 @@
 import json
+import os
 
 
 class MBConfig:
@@ -13,7 +14,7 @@ class MBConfig:
             self.apptoto_user = apptoto_user
             self.survey_id = survey_id
         else:
-            with open('config.json') as f:
+            with open(os.path.join('instance', 'config.json')) as f:
                 configuration = json.load(f)
                 self.qualtrics_api_token = configuration['qualtrics_api_token']
                 self.apptoto_api_token = configuration['apptoto_api_token']

@@ -1,4 +1,4 @@
-from motivationalboost import create_app
+from motivationalboost.flask_app import create_app
 
 
 def test_config():

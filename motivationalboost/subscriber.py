@@ -2,7 +2,7 @@ from flask import (
     Blueprint, request, current_app, make_response
 )
 
-from request_handler import RequestHandler
+from .request_handler import RequestHandler
 
 bp = Blueprint('subscriber', __name__)
 
