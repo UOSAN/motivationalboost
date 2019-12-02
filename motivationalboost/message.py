@@ -47,8 +47,7 @@ class Message:
         :return: a datetime in the 'America/Los_Angeles' timezone
         """
         if self._schedule_template == '' or self._schedule_template == 'now':
-            # TODO: Perhaps delay the "now" response by a few minutes to make sure it can get scheduled and sent
-            return datetime.now(tz=tz.gettz('America/Los_Angeles'))
+            return datetime.now(tz=tz.gettz('America/Los_Angeles')) + timedelta(minutes=2)
         else:
             start_date_time = f'{self._start_date_template.substitute(self._placeholders)} ' \
                               f'{self._start_time_template.substitute(self._placeholders)}'
