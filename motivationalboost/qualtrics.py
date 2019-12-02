@@ -4,7 +4,7 @@ from time import sleep
 from typing import Optional
 
 
-class QualtricsQuery():
+class QualtricsQuery:
     def __init__(self, survey_id: str, api_token: str):
         self._endpoint = 'https://ca1.qualtrics.com/API/v3'
         self._headers = {'X-API-TOKEN': api_token}
@@ -17,7 +17,7 @@ class QualtricsQuery():
         :return: A progress identifier
         """
         url = f'{self._endpoint}/surveys/{self._survey_id}/export-responses'
-        start_date =  datetime.datetime.now().replace(tzinfo=datetime.timezone.utc).isoformat(timespec='seconds')
+        start_date = datetime.datetime.now().replace(tzinfo=datetime.timezone.utc).isoformat(timespec='seconds')
         request_data = {'format': 'json', 'compress': 'false', 'startDate': start_date}
         r = requests.post(url=url, json=request_data, headers=self._headers, timeout=self._timeout)
         export_progress_id = None
