@@ -1,6 +1,6 @@
 import pytest
 from motivationalboost.flask_app import create_app
-from mbconfig import MBConfig
+from motivationalboost.mbconfig import MBConfig
 
 
 @pytest.fixture
