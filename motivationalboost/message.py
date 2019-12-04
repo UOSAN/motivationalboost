@@ -10,7 +10,7 @@ from .parse_date_time import parse_datetime_string
 class Message:
     def __init__(self, content: str, schedule: str, start_date: str, start_time: str, title: str):
         self._content_template = Template(content)
-        self._schedule_template = schedule
+        self._schedule = schedule
         self._start_date_template = Template(start_date)
         self._start_time_template = Template(start_time)
         self._title_template = Template(title)
@@ -46,14 +46,14 @@ class Message:
         Get the date time that the message should be sent
         :return: a datetime in the 'America/Los_Angeles' timezone
         """
-        if self._schedule_template == '' or self._schedule_template == 'now':
+        if self._schedule == '' or self._schedule == 'now':
             return datetime.now(tz=tz.gettz('America/Los_Angeles')) + timedelta(minutes=2)
         else:
             start_date_time = f'{self._start_date_template.substitute(self._placeholders)} ' \
                               f'{self._start_time_template.substitute(self._placeholders)}'
             start = parse_datetime_string(start_date_time)
 
-            if self._schedule_template.endswith('h'):
-                start = start + timedelta(hours=int(self._schedule_template[:-1]))
+            if self._schedule.endswith('h'):
+                start = start + timedelta(hours=int(self._schedule[:-1]))
 
             return start
