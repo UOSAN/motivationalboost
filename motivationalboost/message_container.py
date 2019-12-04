@@ -1,15 +1,15 @@
 import json
-import os
+from pathlib import Path
 from typing import List, Set
 
 from .message import Message
 
 
 class MessageContainer:
-    def __init__(self, template_path: os.PathLike = os.getcwd()):
+    def __init__(self, template_path: Path = Path.cwd()):
         self._container = []
         try:
-            with open(template_path / 'module1_template.json') as f:
+            with open(str(template_path / 'module1_template.json')) as f:
                 template_string = json.load(f)
                 for m in template_string['messages']:
                     message = Message(m['content'], m['schedule'], m['start_date'], m['start_time'], m['title'])
