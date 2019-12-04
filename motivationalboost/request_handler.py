@@ -1,10 +1,9 @@
 from typing import Set, Mapping
 
-from .mbconfig import MBConfig
-from .qualtrics import QualtricsQuery
 from .apptoto import Apptoto
 from .apptoto_event import ApptotoEvent
 from .apptoto_participant import ApptotoParticipant
+from .mbconfig import MBConfig
 from .message_container import MessageContainer
 
 VALUES = 'values'
@@ -27,24 +26,19 @@ def get_placeholder_value_mapping(response, placeholders: Set[str]) -> Mapping[s
 
 
 class RequestHandler:
-    def __init__(self, config: MBConfig, response_id: str = None):
+    def __init__(self, config: MBConfig, survey_output: Mapping[str, str]):
         self._config = config
-        self._response_id = response_id
+        self._survey_output = survey_output
 
     def handle_request(self):
-        q = QualtricsQuery(survey_id=self._config.survey_id,
-                           api_token=self._config.qualtrics_api_token)
-        response = q.get_survey_response(response_id=self._response_id)
-
         # Create Apptoto context
         apptoto = Apptoto(api_token=self._config.apptoto_api_token, user=self._config.apptoto_user)
         message_templates = MessageContainer()
-        placeholder_values = get_placeholder_value_mapping(response, message_templates.get_placeholders())
-        part = ApptotoParticipant(name=response[VALUES][PARTICIPANT_NAME], phone=response[VALUES][PARTICIPANT_PHONE])
+        part = ApptotoParticipant(name=self._survey_output.get('name'), phone=self._survey_output.get('phone'))
 
         for message in message_templates.get_messages():
             # set the placeholders
-            message.set_placeholders(placeholder_values)
+            message.set_placeholders(self._survey_output)
             # Create an Apptoto event from it
             ee = ApptotoEvent(calendar='', title=message.get_title(), start_time=message.get_message_time(),
                               end_time=message.get_message_time(), content=message.get_content(),
