@@ -40,7 +40,7 @@ class RequestHandler:
         apptoto = Apptoto(api_token=self._config.apptoto_api_token, user=self._config.apptoto_user)
         message_templates = MessageContainer()
         placeholder_values = get_placeholder_value_mapping(response, message_templates.get_placeholders())
-        part = ApptotoParticipant(name=response[VALUES][PARTICIPANT_NAME], email='', phone=response[VALUES][PARTICIPANT_PHONE])
+        part = ApptotoParticipant(name=response[VALUES][PARTICIPANT_NAME], phone=response[VALUES][PARTICIPANT_PHONE])
 
         for message in message_templates.get_messages():
             # set the placeholders
