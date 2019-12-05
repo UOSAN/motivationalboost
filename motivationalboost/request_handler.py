@@ -40,8 +40,8 @@ class RequestHandler:
             # set the placeholders
             message.set_placeholders(self._survey_output)
             # Create an Apptoto event from it
-            ee = ApptotoEvent(calendar='', title=message.get_title(), start_time=message.get_message_time(),
-                              end_time=message.get_message_time(), content=message.get_content(),
-                              participants=[part])
+            ee = ApptotoEvent(calendar=self._config.apptoto_calendar, title=message.get_title(),
+                              start_time=message.get_message_time(), end_time=message.get_message_time(),
+                              content=message.get_content(), participants=[part])
             apptoto.post_events([ee])
 
