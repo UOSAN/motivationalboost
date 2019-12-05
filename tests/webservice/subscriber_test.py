@@ -1,9 +1,8 @@
-import pytest
 import requests
 
 
 _api_token = 'test_api_token'
-_endpoint = 'https://ca1.qualtrics.com/API/v3'
+_endpoint = 'https://api.apptoto.com/v1/events'
 _response_id = 'test_response_id'
 _survey_id = 'test_survey_id'
 
@@ -12,18 +11,15 @@ def test_event_subscriber_bad_request(app):
     # Verify that 400 Bad Request is returned on a bad request
     with app.app_context():
         client = app.test_client()
-        response = client.post('/response', data={'a': 'b'})
+        response = client.post('/response', data='some garbage test data', content_type='application/text')
         assert response.status == '400 BAD REQUEST'
 
 
-def test_event_subscriber_invalid_response_id(app, requests_mock):
-    # Arrange. Mock the underlying call to qualtrics to throw ValueError because response_id is not valid
-    url = f'{_endpoint}/surveys/{_survey_id}/responses/{_response_id}'
-    requests_mock.get(url=url, status_code=requests.codes.bad_request)
+def test_event_subscriber_valid_request(app, requests_mock):
+    # Arrange. Mock the underlying call to apptoto to succeed
+    requests_mock.post(url=_endpoint, status_code=requests.codes.ok)
 
     with app.app_context():
         client = app.test_client()
-        # Assert
-        with pytest.raises(ValueError):
-            # Act
-            client.post('/response', data={'ResponseID': _response_id})
+        response = client.post('/response', json={'response_id': _response_id})
+        assert response.status == '200 OK'

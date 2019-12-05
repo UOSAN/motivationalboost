@@ -1,30 +1,30 @@
 {
   "messages": [
     {
-      "content": "Nice work on those Boosts ${QID03}! You committed to practice Breathe for Baby at ${QID42} on ${QID41} and to chat with me about Early Labor at ${QID48} on ${QID47}. I'll send your Boosts a couple hours before. Thx! -April.",
+      "content": "Nice work on those Boosts ${Q03}! You committed to practice Breathe for Baby at ${Q42} on ${Q41} and to chat with me about Early Labor at ${Q48} on ${Q47}. I'll send your Boosts a couple hours before. Thx! -April.",
       "schedule": "now",
-      "start_date": "${QID41}",
-      "start_time": "${QID42}",
+      "start_date": "${Q41}",
+      "start_time": "${Q42}",
       "title": "Boost Schedule Summary 1"
     },
     {
-      "content": "Hi ${QID03}! Here's your Baby Boost: I commit to practice Breathe for Baby at ${QID42} on ${QID41} because I care about ${QID30} and I want ${QID23} for Baby's birth.",
+      "content": "Hi ${Q03}! Here's your Baby Boost: I commit to practice Breathe for Baby at ${Q42} on ${Q41} because I care about ${Q30} and I want ${Q23} for Baby's birth.",
       "schedule": "-2h",
-      "start_date": "${QID41}",
-      "start_time": "${QID42}",
+      "start_date": "${Q41}",
+      "start_time": "${Q42}",
       "title": "Breathe for Baby"
     },
     {
-      "content": "Here's your Session Boost, ${QID03}: I commit to login to Birth Your Way & chat with April about Early Labor at ${QID48} on ${QID47} because I care about ${QID32}, ${QID34} for Baby's birth.",
+      "content": "Here's your Session Boost, ${Q03}: I commit to login to Birth Your Way & chat with April about Early Labor at ${Q48} on ${Q47} because I care about ${Q32}, ${Q34} for Baby's birth.",
       "schedule": "-2h",
-      "start_date": "${QID47}",
-      "start_time": "${QID48}",
+      "start_date": "${Q47}",
+      "start_time": "${Q48}",
       "title": "Session 2 (Early Labor - part 1)"
     },
     {
-      "content": "Hi ${QID03}, April here. Just want to let you know I'm looking forward to chatting with you about Early Labor tomorrow at ${QID48} on ${QID47}. See you soon!",
+      "content": "Hi ${Q03}, April here. Just want to let you know I'm looking forward to chatting with you about Early Labor tomorrow at ${Q48} on ${Q47}. See you soon!",
       "schedule": "-1d",
-      "start_date": "${QID47}",
+      "start_date": "${Q47}",
       "start_time": "4:00pm",
       "title": "Boost Schedule Summary 2"
     }

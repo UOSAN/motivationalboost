@@ -1,7 +1,18 @@
-from datetime import datetime
-from dateutil import tz
+from datetime import datetime, timedelta, date
 
-from motivationalboost.message import Message
+import pytest
+from dateutil import tz, relativedelta
+
+from motivationalboost.message import Message, day_to_delta
+
+
+def get_expected_date(weekday: str) -> date:
+    now = datetime.now(tz=tz.gettz('America/Los_Angeles'))
+    weekday_string = now.strftime("%A")
+    if weekday_string == weekday:
+        return (now + timedelta(days=7)).date()
+    else:
+        return now.date() + relativedelta.relativedelta(weekday=day_to_delta[weekday])
 
 
 class TestMessage:
@@ -49,17 +60,35 @@ class TestMessage:
         # Verify that content is an empty string because it has no placeholders
         assert m.get_content() == ''
 
-    def test_get_message_time_relative_time(self):
+    def test_get_message_time_relative_time_hours(self):
         start_date = '${PH01}'
         start_time = '${PH02}'
         schedule = '-2h'
-        placeholders = {'PH01': '08-04-2019', 'PH02': '4:30pm'}
+        placeholders = {'PH01': 'Friday', 'PH02': '1pm'}
 
         m = Message(content='', schedule=schedule, start_date=start_date, start_time=start_time, title='')
         m.set_placeholders(placeholders=placeholders)
 
         # Expected time is two hours before start_time, because of the relative offset from schedule
-        expected = datetime(year=2019, month=8, day=4, hour=14, minute=30, tzinfo=tz.gettz('America/Los_Angeles'))
+        temp = get_expected_date(placeholders['PH01'])
+        expected = datetime(year=temp.year, month=temp.month, day=temp.day, hour=11, minute=0,
+                            tzinfo=tz.gettz('America/Los_Angeles'))
+
+        assert m.get_message_time() == expected
+
+    def test_get_message_time_relative_time_days(self):
+        start_date = '${PH01}'
+        start_time = '${PH02}'
+        schedule = '-1d'
+        placeholders = {'PH01': 'Thursday', 'PH02': '4:30pm'}
+
+        m = Message(content='', schedule=schedule, start_date=start_date, start_time=start_time, title='')
+        m.set_placeholders(placeholders=placeholders)
+
+        # Expected time is one day before start_time, because of the relative offset from schedule
+        temp = get_expected_date(placeholders['PH01'])
+        expected = datetime(year=temp.year, month=temp.month, day=temp.day - 1, hour=16, minute=30,
+                            tzinfo=tz.gettz('America/Los_Angeles'))
 
         assert m.get_message_time() == expected
 
@@ -67,7 +96,7 @@ class TestMessage:
         start_date = '${PH01}'
         start_time = '${PH02}'
         schedule = 'now'
-        placeholders = {'PH01': '08-04-2019', 'PH02': '4:30pm'}
+        placeholders = {'PH01': 'Wednesday', 'PH02': '4:30pm'}
 
         m = Message(content='', schedule=schedule, start_date=start_date, start_time=start_time, title='')
         m.set_placeholders(placeholders=placeholders)
@@ -81,7 +110,7 @@ class TestMessage:
         start_date = '${PH01}'
         start_time = '${PH02}'
         schedule = ''
-        placeholders = {'PH01': '08-04-2019', 'PH02': '4:30pm'}
+        placeholders = {'PH01': 'Tuesday', 'PH02': '4:30pm'}
 
         m = Message(content='', schedule=schedule, start_date=start_date, start_time=start_time, title='')
         m.set_placeholders(placeholders=placeholders)
@@ -89,3 +118,20 @@ class TestMessage:
         # Verify that message_time is essentially now.
         expected = datetime.now(tz=tz.gettz('America/Los_Angeles'))
         assert (m.get_message_time() - expected).microseconds < 1000
+
+    @pytest.mark.parametrize('weekday', ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'])
+    def test_get_message_time(self, weekday):
+        start_date = '${PH01}'
+        start_time = '${PH02}'
+        schedule = '-2h'
+        placeholders = {'PH01': weekday, 'PH02': '1pm'}
+
+        m = Message(content='', schedule=schedule, start_date=start_date, start_time=start_time, title='')
+        m.set_placeholders(placeholders=placeholders)
+
+        # Expected time is two hours before start_time, because of the relative offset from schedule
+        temp = get_expected_date(placeholders['PH01'])
+        expected = datetime(year=temp.year, month=temp.month, day=temp.day, hour=11, minute=0,
+                            tzinfo=tz.gettz('America/Los_Angeles'))
+
+        assert m.get_message_time() == expected
