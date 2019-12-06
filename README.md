@@ -1,4 +1,5 @@
 Generate text messages for motivational boost study participants by using Qualtrics survey results to generate Apptoto events.
 
-Workflow:
-![workflow](./workflow.png)
+
+![motivational boost workflow](./workflow.png)
+(thanks to [xkcd](https://xkcd.com/2223/))
