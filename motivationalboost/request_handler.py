@@ -36,12 +36,13 @@ class RequestHandler:
         message_templates = MessageContainer()
         part = ApptotoParticipant(name=self._survey_output.get('name'), phone=self._survey_output.get('phone'))
 
+        events = []
         for message in message_templates.get_messages():
             # set the placeholders
             message.set_placeholders(self._survey_output)
             # Create an Apptoto event from it
-            ee = ApptotoEvent(calendar=self._config.get_apptoto_calendar(), title=message.get_title(),
-                              start_time=message.get_message_time(), end_time=message.get_message_time(),
-                              content=message.get_content(), participants=[part])
-            apptoto.post_events([ee])
-
+            events.append(ApptotoEvent(calendar=self._config.get_apptoto_calendar(), title=message.get_title(),
+                                       start_time=message.get_message_time(), end_time=message.get_message_time(),
+                                       content=message.get_content(), participants=[part]))
+        if len(events) > 0:
+            apptoto.post_events(events)
