@@ -2,4 +2,4 @@ Generate text messages for motivational boost study participants by using Qualtr
 
 
 ![motivational boost workflow](./workflow.png)
-(thanks to [xkcd](https://xkcd.com/2223/))
+(Stick figure using a phone from [xkcd](https://xkcd.com/2223/))
