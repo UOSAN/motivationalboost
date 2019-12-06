@@ -22,11 +22,10 @@ class TestApptoto:
                            status_code=requests.codes.ok)
 
         # Act
-        a.post_events(events)
+        post = a.post_events(events)
 
         # Assert
-        captured = capsys.readouterr()
-        assert captured.out == 'Posted events to Apptoto\n'
+        assert post
 
     def test_post_events_failure(self, requests_mock, capsys):
         # Verify no output in the case of failing to post events.
@@ -39,8 +38,7 @@ class TestApptoto:
                            status_code=requests.codes.bad_request)
 
         # Act
-        a.post_events(events)
+        post = a.post_events(events)
 
         # Assert
-        captured = capsys.readouterr()
-        assert captured.out == 'Failed to post events - 400 - b\'\'\n'
+        assert not post
