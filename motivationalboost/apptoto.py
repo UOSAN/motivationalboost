@@ -1,4 +1,5 @@
 from typing import List
+import logging
 
 import jsonpickle
 import requests
@@ -22,6 +23,7 @@ class Apptoto:
         """
         url = f'{self._endpoint}/events'
         request_data = jsonpickle.encode({'events': events, 'prevent_calendar_creation': True}, unpicklable=False)
+        logging.getLogger().info(str(request_data))
         r = requests.post(url=url,
                           data=request_data,
                           headers=self._headers,
@@ -30,3 +32,5 @@ class Apptoto:
 
         if r.status_code == requests.codes.ok:
             print('Posted events to Apptoto')
+        else:
+            print(f'Failed to post events - {str(r.status_code)} - {r.content}')
