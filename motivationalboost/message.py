@@ -65,10 +65,12 @@ class Message:
             start_day = self._start_date_template.substitute(self._placeholders)
 
             delta = day_to_delta.get(start_day, None)
+            today = datetime.now(tz=tz.gettz('America/Los_Angeles')).date().today()
+
             if delta:
-                start_date = date.today() + relativedelta.relativedelta(days=1, weekday=delta)
+                start_date = today + relativedelta.relativedelta(days=1, weekday=delta)
             else:
-                start_date = date.today()
+                start_date = today
 
             sss = start_date.strftime('%m-%d-%Y')
             start_date_time = f'{sss} ' \
