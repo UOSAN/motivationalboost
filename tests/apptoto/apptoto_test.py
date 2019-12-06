@@ -43,4 +43,4 @@ class TestApptoto:
 
         # Assert
         captured = capsys.readouterr()
-        assert captured.out == ''
+        assert captured.out == 'Failed to post events - 400 - b\'\'\n'
