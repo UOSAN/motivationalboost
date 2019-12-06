@@ -1,4 +1,5 @@
 import json
+import logging
 from pathlib import Path
 from typing import List, Set
 
@@ -6,7 +7,7 @@ from .message import Message
 
 
 class MessageContainer:
-    def __init__(self, template_path: Path = Path.cwd()):
+    def __init__(self, template_path: Path = Path.cwd() / 'templates'):
         self._container = []
         try:
             with open(str(template_path / 'module1_template.json')) as f:
@@ -17,7 +18,7 @@ class MessageContainer:
         except (FileNotFoundError, KeyError):
             # Explicitly ignore FileNotFoundErrors and create an empty container
             # Explicitly ignore KeyErrors, and do not create a Message object.
-            pass
+            logging.getLogger().info(f'Unable to load message templates from directory: {str(template_path)}')
 
     def __len__(self):
         return len(self._container)
