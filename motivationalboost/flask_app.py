@@ -1,6 +1,7 @@
 from flask import Flask
 
 from .mbconfig import MBConfig
+from .subscriber import bp
 
 
 def create_app(test_config=None):
@@ -13,7 +14,6 @@ def create_app(test_config=None):
         # load the test config if passed in
         app.config.from_mapping(test_config)
 
-    from .subscriber import bp
     app.register_blueprint(bp)
 
     return app
