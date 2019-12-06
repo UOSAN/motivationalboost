@@ -12,7 +12,7 @@ bp = Blueprint('subscriber', __name__)
 def event_subscriber():
     if request.is_json:
         survey_output = request.get_json()
-        current_app.logger.info(f'New survey response received:\n{str(survey_output)}\n')
+        current_app.logger.info(f'New survey response received')
 
         try:
             handler = RequestHandler(config=current_app.config['MBCONFIG'], survey_output=survey_output)
