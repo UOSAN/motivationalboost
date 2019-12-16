@@ -3,7 +3,7 @@ import logging
 from pathlib import Path
 from typing import List, Set
 
-from .message import Message
+from message import Message
 
 
 class MessageContainer:

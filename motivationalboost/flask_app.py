@@ -1,7 +1,7 @@
 from flask import Flask
 
-from .mbconfig import MBConfig
-from .subscriber import bp
+from mbconfig import MBConfig
+from subscriber import bp
 
 
 def create_app(test_config=None):

@@ -5,7 +5,7 @@ import jsonpickle
 import requests
 from requests.auth import HTTPBasicAuth
 
-from .apptoto_event import ApptotoEvent
+from apptoto_event import ApptotoEvent
 
 
 class Apptoto:

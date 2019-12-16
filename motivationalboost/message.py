@@ -4,7 +4,7 @@ from dateutil import tz, relativedelta
 from string import Template
 from typing import List, Mapping
 
-from .parse_date_time import parse_datetime_string
+from parse_date_time import parse_datetime_string
 
 day_to_delta = {'Monday': relativedelta.MO,
                 'Tuesday': relativedelta.TU,

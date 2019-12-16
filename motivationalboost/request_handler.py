@@ -1,10 +1,10 @@
 from typing import Set, Mapping
 
-from .apptoto import Apptoto
-from .apptoto_event import ApptotoEvent
-from .apptoto_participant import ApptotoParticipant
-from .mbconfig import MBConfig
-from .message_container import MessageContainer
+from apptoto import Apptoto
+from apptoto_event import ApptotoEvent
+from apptoto_participant import ApptotoParticipant
+from mbconfig import MBConfig
+from message_container import MessageContainer
 
 VALUES = 'values'
 LABELS = 'labels'
