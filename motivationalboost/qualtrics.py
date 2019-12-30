@@ -1,7 +1,8 @@
 import datetime
-import requests
 from time import sleep
 from typing import Optional
+
+import requests
 
 
 class QualtricsQuery:

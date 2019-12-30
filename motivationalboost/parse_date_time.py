@@ -1,4 +1,5 @@
 from datetime import datetime
+
 import dateutil
 
 
@@ -15,4 +16,3 @@ def parse_datetime_string(datetime_string: str) -> datetime:
     except ValueError:
         temp = datetime.strptime(datetime_string, '%m-%d-%Y %I%p')
         return temp.replace(tzinfo=tz)
-

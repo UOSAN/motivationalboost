@@ -1,8 +1,9 @@
 import re
-from datetime import datetime, timedelta, date
-from dateutil import tz, relativedelta
+from datetime import datetime, timedelta
 from string import Template
 from typing import List, Mapping
+
+from dateutil import tz, relativedelta
 
 from .parse_date_time import parse_datetime_string
 
