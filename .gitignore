@@ -131,3 +131,6 @@ dmypy.json
 
 # Ignore application configuration file
 instance/
+
+# Ignore Azure app configurations file
+.azure/
