@@ -10,7 +10,6 @@ class MBConfig:
     def __init__(self, path: str = None):
         logging.getLogger().info(f' Configuration path is: {path}')
         self._config_path = path
-        self._qualtrics_api_token = None
         self._apptoto_api_token = None
         self._apptoto_calendar = None
         self._apptoto_user = None
@@ -19,7 +18,6 @@ class MBConfig:
         if self._config_path:
             with open(os.path.join(self._config_path, 'config.json')) as f:
                 configuration = json.load(f)
-                self._qualtrics_api_token = configuration['qualtrics_api_token']
                 self._apptoto_api_token = configuration['apptoto_api_token']
                 self._apptoto_calendar = configuration['apptoto_calendar']
                 self._apptoto_user = configuration['apptoto_user']
