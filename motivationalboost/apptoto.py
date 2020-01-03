@@ -17,9 +17,9 @@ class Apptoto:
         self._timeout = 5
 
     def post_events(self, events: List[ApptotoEvent]):
-        r"""
+        """
         Post events to the /v1/events API to create events that will send messages to all participants.
-        :param events: 
+        :param events: List of events to create
         """
         url = f'{self._endpoint}/events'
         request_data = jsonpickle.encode({'events': events, 'prevent_calendar_creation': True}, unpicklable=False)

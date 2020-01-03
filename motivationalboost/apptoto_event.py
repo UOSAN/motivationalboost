@@ -5,7 +5,7 @@ from .apptoto_participant import ApptotoParticipant
 
 
 class ApptotoEvent:
-    r"""
+    """
     Represents a single event. Messages will be sent at start_time to all participants.
     """
     def __init__(self, calendar: str, title: str, start_time: datetime, end_time: datetime,

@@ -16,8 +16,8 @@ class MessageContainer:
                     message = Message(m['content'], m['schedule'], m['start_date'], m['start_time'], m['title'])
                     self._container.append(message)
         except (FileNotFoundError, KeyError):
-            # Explicitly ignore FileNotFoundErrors and create an empty container
-            # Explicitly ignore KeyErrors, and do not create a Message object.
+            # Explicitly ignore FileNotFoundErrors and create an empty container.
+            # Explicitly ignore KeyErrors, and create an empty container.
             logging.getLogger().info(f'Unable to load message templates from directory: {str(template_path)}')
 
     def __len__(self):

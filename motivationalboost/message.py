@@ -26,7 +26,7 @@ class Message:
         self._placeholders = None
 
     def get_placeholders(self) -> List[str]:
-        """Return a set of all the placeholders in the message"""
+        """Return a list of all the placeholders in the message"""
         # Copied the pattern for string templates from CPython:
         # https://github.com/python/cpython/blob/master/Lib/string.py#L78
         delimiter = re.escape('$')
