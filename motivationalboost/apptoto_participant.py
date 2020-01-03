@@ -1,5 +1,5 @@
 class ApptotoParticipant:
-    r"""
+    """
     Represents a single participant on an ApptotoEvent. This participant will receive messages
     via email or phone.
     """
