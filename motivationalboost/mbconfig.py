@@ -14,7 +14,7 @@ class MBConfig:
         self._apptoto_calendar = None
         self._apptoto_user = None
 
-    def read_config(self):
+    def _read_config(self):
         if self._config_path:
             with open(os.path.join(self._config_path, 'config.json')) as f:
                 configuration = json.load(f)
@@ -24,15 +24,15 @@ class MBConfig:
 
     def get_apptoto_api_token(self):
         if self._apptoto_api_token is None:
-            self.read_config()
+            self._read_config()
         return self._apptoto_api_token
 
     def get_apptoto_calendar(self):
         if self._apptoto_calendar is None:
-            self.read_config()
+            self._read_config()
         return self._apptoto_calendar
 
     def get_apptoto_user(self):
         if self._apptoto_user is None:
-            self.read_config()
+            self._read_config()
         return self._apptoto_user
