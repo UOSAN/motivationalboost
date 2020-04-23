@@ -1,10 +1,8 @@
 import requests
 
 
-_api_token = 'test_api_token'
 _endpoint = 'https://api.apptoto.com/v1/events'
 _response_id = 'test_response_id'
-_survey_id = 'test_survey_id'
 
 
 def test_event_subscriber_bad_request(app):
