@@ -129,8 +129,5 @@ dmypy.json
 # PyCharm
 .idea/
 
-# Ignore application configuration file
-instance/
-
 # Ignore Azure app configurations file
 .azure/
