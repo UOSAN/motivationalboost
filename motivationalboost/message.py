@@ -3,17 +3,9 @@ from datetime import datetime, timedelta
 from string import Template
 from typing import List, Mapping
 
-from dateutil import tz, relativedelta
+from dateutil import tz
 
 from .parse_date_time import parse_datetime_string
-
-day_to_delta = {'Monday': relativedelta.MO,
-                'Tuesday': relativedelta.TU,
-                'Wednesday': relativedelta.WE,
-                'Thursday': relativedelta.TH,
-                'Friday': relativedelta.FR,
-                'Saturday': relativedelta.SA,
-                'Sunday': relativedelta.SU}
 
 
 class Message:

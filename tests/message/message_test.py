@@ -1,9 +1,9 @@
-from datetime import datetime, timedelta, date
+from datetime import datetime, date
 
 import pytest
-from dateutil import tz, relativedelta
+from dateutil import tz
 
-from motivationalboost.message import Message, day_to_delta
+from motivationalboost.message import Message
 
 
 def get_expected_date(weekday: str) -> date:
