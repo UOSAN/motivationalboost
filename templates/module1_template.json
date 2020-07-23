@@ -8,21 +8,21 @@
       "title": "Boost Schedule Summary 1"
     },
     {
-      "content": "Hi ${Q03}! Here's your Baby Boost: I commit to practice Breathe for Baby at ${Q42} on ${Q41} because I care about ${Q30} and I want ${Q23} for Baby's birth.",
+      "content": "Hi ${Q03}! Here's your Baby Boost: I commit to practice Breathe for Baby at ${Q42} today because I care about ${Q30} and I want ${Q23} for Baby's birth. Thx! -April",
       "schedule": "-2h",
       "start_date": "${Q41}",
       "start_time": "${Q42}",
       "title": "Breathe for Baby"
     },
     {
-      "content": "Here's your Session Boost, ${Q03}: I commit to login to Birth Your Way & chat with April about Early Labor at ${Q48} on ${Q47} because I care about ${Q32} for Baby's birth.",
+      "content": "Here's your Session Boost, ${Q03}: I commit to login to Birth Your Way here: https://tinyurl.com/y6fbkyma & chat with April about Early Labor at ${Q48} today because I care about ${Q32} for Baby's birth.",
       "schedule": "-2h",
       "start_date": "${Q47}",
       "start_time": "${Q48}",
       "title": "Session 2 (Early Labor - part 1)"
     },
     {
-      "content": "Hi ${Q03}, April here. Just want to let you know I'm looking forward to chatting with you about Early Labor tomorrow at ${Q48} on ${Q47}. See you soon!",
+      "content": "Hi ${Q03}, April here. Just want to let you know I'm looking forward to chatting w/u about Early Labor tomorrow at ${Q48} Login here: https://tinyurl.com/y6fbkyma & I'll see you soon!",
       "schedule": "-1d",
       "start_date": "${Q47}",
       "start_time": "4:00pm",
