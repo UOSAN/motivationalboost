@@ -15,7 +15,7 @@ class Message:
         self._start_date_template = Template(start_date)
         self._start_time_template = Template(start_time)
         self._title_template = Template(title)
-        self._placeholders = None
+        self._placeholders: Mapping[str, str] = None
 
     def get_placeholders(self) -> List[str]:
         """Return a list of all the placeholders in the message"""
