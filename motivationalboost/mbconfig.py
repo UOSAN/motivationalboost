@@ -5,7 +5,7 @@ import os
 
 class MBConfig:
     """
-    Class to read configuration for motivational boost from the environment
+    Class to read configuration for motivationalboost from the environment.
     """
     def __init__(self, path: str = None):
         logging.getLogger().info(f' Configuration path is: {path}')

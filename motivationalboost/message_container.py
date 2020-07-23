@@ -28,7 +28,7 @@ class MessageContainer:
 
     def get_placeholders(self) -> Set[str]:
         """
-        Get all the placeholders in all the messages
+        Get all the placeholders in all the messages.
         :return: a set of the placeholder strings
         """
         placeholders = set()

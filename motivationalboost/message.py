@@ -18,7 +18,7 @@ class Message:
         self._placeholders: Mapping[str, str] = {}
 
     def get_placeholders(self) -> List[str]:
-        """Return a list of all the placeholders in the message"""
+        """Return a list of all the placeholders in the message."""
         # Copied the pattern for string templates from CPython:
         # https://github.com/python/cpython/blob/master/Lib/string.py#L78
         delimiter = re.escape('$')
@@ -35,16 +35,16 @@ class Message:
         self._placeholders = placeholders
 
     def get_content(self) -> str:
-        """Return the substituted template content string"""
+        """Return the substituted template content string."""
         return self._content_template.substitute(self._placeholders)
 
     def get_title(self) -> str:
-        """Return the substituted template title string"""
+        """Return the substituted template title string."""
         return self._title_template.substitute(self._placeholders)
 
     def get_message_time(self) -> datetime:
         """
-        Get the date time that the message should be sent
+        Get the date time that the message should be sent.
         :return: a datetime in the 'America/Los_Angeles' timezone
         """
         if self._schedule == '' or self._schedule == 'now':

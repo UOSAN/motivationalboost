@@ -6,24 +6,6 @@ from .apptoto_participant import ApptotoParticipant
 from .mbconfig import MBConfig
 from .message_container import MessageContainer
 
-VALUES = 'values'
-LABELS = 'labels'
-PARTICIPANT_NAME = 'QID3'
-PARTICIPANT_EMAIL = ''
-PARTICIPANT_PHONE = 'QID1'
-
-
-def get_placeholder_value_mapping(response, placeholders: Set[str]) -> Mapping[str, str]:
-    # Consider only finished survey responses
-    values = response[VALUES]
-    mapping = {}
-    if values['finished'] == 1:
-        # Get a mapping of each placeholder in the messages to the values from the survey
-        for p in placeholders:
-            mapping[p] = values[p]
-
-    return mapping
-
 
 class RequestHandler:
     def __init__(self, config: MBConfig, survey_output: Mapping[str, str]):
