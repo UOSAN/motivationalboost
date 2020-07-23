@@ -132,3 +132,16 @@ class TestMessage:
                             tzinfo=tz.gettz('America/Los_Angeles'))
 
         assert m.get_message_time() == expected
+
+    def test_get_message_time_invalid_date_string(self):
+        start_date = '${PH01}'
+        start_time = '${PH02}'
+        schedule = '-2h'
+        placeholders = {'PH01': 'Invalid date string', 'PH02': '4:30pm'}
+
+        m = Message(content='', schedule=schedule, start_date=start_date, start_time=start_time, title='')
+        m.set_placeholders(placeholders=placeholders)
+
+        # Verify ValueError exception is raised when input date string is invalid.
+        with pytest.raises(ValueError):
+            m.get_message_time()
