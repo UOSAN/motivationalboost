@@ -6,8 +6,8 @@ from dateutil import tz
 from motivationalboost.message import Message
 
 
-def get_expected_date(weekday: str) -> date:
-    temp_date = datetime.strptime(weekday, '%m-%d-%Y')
+def get_expected_date(start_date_str: str) -> date:
+    temp_date = datetime.strptime(start_date_str, '%m-%d-%Y')
     return date(temp_date.year, temp_date.month, temp_date.day)
 
 
@@ -115,13 +115,13 @@ class TestMessage:
         expected = datetime.now(tz=tz.gettz('America/Los_Angeles'))
         assert (m.get_message_time() - expected).microseconds < 1000
 
-    @pytest.mark.parametrize('weekday', ['01-02-2017', '03-04-2018', '05-06-2019', '07-08-2020', '09-10-2021',
-                                         '11-12-2022', '12-31-2023'])
-    def test_get_message_time(self, weekday):
+    @pytest.mark.parametrize('start_date_str', ['01-02-2017', '03-04-2018', '05-06-2019', '07-08-2020', '09-10-2021',
+                                                '11-12-2022', '12-31-2023'])
+    def test_get_message_time(self, start_date_str):
         start_date = '${PH01}'
         start_time = '${PH02}'
         schedule = '-2h'
-        placeholders = {'PH01': weekday, 'PH02': '1pm'}
+        placeholders = {'PH01': start_date_str, 'PH02': '1pm'}
 
         m = Message(content='', schedule=schedule, start_date=start_date, start_time=start_time, title='')
         m.set_placeholders(placeholders=placeholders)
