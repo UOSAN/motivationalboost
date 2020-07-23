@@ -3,17 +3,9 @@ from datetime import datetime, timedelta
 from string import Template
 from typing import List, Mapping
 
-from dateutil import tz, relativedelta
+from dateutil import tz
 
 from .parse_date_time import parse_datetime_string
-
-day_to_delta = {'Monday': relativedelta.MO,
-                'Tuesday': relativedelta.TU,
-                'Wednesday': relativedelta.WE,
-                'Thursday': relativedelta.TH,
-                'Friday': relativedelta.FR,
-                'Saturday': relativedelta.SA,
-                'Sunday': relativedelta.SU}
 
 
 class Message:
@@ -23,7 +15,7 @@ class Message:
         self._start_date_template = Template(start_date)
         self._start_time_template = Template(start_time)
         self._title_template = Template(title)
-        self._placeholders = None
+        self._placeholders: Mapping[str, str] = {}
 
     def get_placeholders(self) -> List[str]:
         """Return a list of all the placeholders in the message"""
@@ -58,23 +50,12 @@ class Message:
         if self._schedule == '' or self._schedule == 'now':
             return datetime.now(tz=tz.gettz('America/Los_Angeles')) + timedelta(minutes=2)
         else:
-            # The text in the start_date_template placeholder is actually the next weekday,
-            # so get the today's day, and then find the next weekday, then add the time for
-            # the reminder, modify per the schedule provided, then return the correct datetime.
+            # The text in the start_date_template placeholder is a date formatted as '%m-%d-%Y'
+            # so the start time can just be appended to it.
+            start_date = self._start_date_template.substitute(self._placeholders)
+            start_date = start_date.strip()
 
-            # If start_day is the same as today, then calculate a time next week.
-            start_day = self._start_date_template.substitute(self._placeholders)
-
-            delta = day_to_delta.get(start_day, None)
-            today = datetime.now(tz=tz.gettz('America/Los_Angeles')).date().today()
-
-            if delta:
-                start_date = today + relativedelta.relativedelta(days=1, weekday=delta)
-            else:
-                start_date = today
-
-            sss = start_date.strftime('%m-%d-%Y')
-            start_date_time = f'{sss} ' \
+            start_date_time = f'{start_date} ' \
                               f'{self._start_time_template.substitute(self._placeholders)}'
             start = parse_datetime_string(start_date_time)
 
