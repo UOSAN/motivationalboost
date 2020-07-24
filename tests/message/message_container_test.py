@@ -1,6 +1,22 @@
 import shutil
+from typing import List, Set
 
+from motivationalboost.message import Message
 from motivationalboost.message_container import MessageContainer
+
+
+def get_placeholders(messages: List[Message]) -> Set[str]:
+    """
+    Get all the placeholders in all the messages.
+
+    :rtype: Set[str]
+    :return: a set of the placeholder strings
+    """
+    placeholders = set()
+    for m in messages:
+        placeholders = placeholders | set(m.get_placeholders())
+
+    return placeholders
 
 
 class TestMessageContainer:
@@ -52,7 +68,7 @@ class TestMessageContainer:
 
         message_container = MessageContainer(template_path=template_path)
 
-        placeholders = message_container.get_placeholders(survey_id='SV_1234')
+        placeholders = get_placeholders(message_container.get_messages(survey_id='SV_1234'))
         expected_placeholders = {'QID03', 'QID41', 'QID42', 'QID47', 'QID48', 'QID30', 'QID23'}
 
         assert len(placeholders) == 7

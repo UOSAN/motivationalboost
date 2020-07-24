@@ -1,7 +1,7 @@
 import json
 import logging
 from pathlib import Path
-from typing import List, Set, Optional
+from typing import List, Optional
 
 from .message import Message
 
@@ -31,14 +31,3 @@ class MessageContainer:
 
     def get_messages(self, survey_id: str) -> Optional[List[Message]]:
         return self._container.get(survey_id)
-
-    def get_placeholders(self, survey_id: str) -> Set[str]:
-        """
-        Get all the placeholders in all the messages.
-        :return: a set of the placeholder strings
-        """
-        placeholders = set()
-        for m in self._container[survey_id]:
-            placeholders = placeholders | set(m.get_placeholders())
-
-        return placeholders
