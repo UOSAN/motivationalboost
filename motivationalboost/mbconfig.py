@@ -4,10 +4,12 @@ import os
 
 
 class MBConfig:
-    """
-    Class to read configuration for motivationalboost from the environment.
-    """
     def __init__(self, path: str = None):
+        """
+        Create an MBConfig instance to read application configuration.
+
+        :param str path: Path to configuration
+        """
         logging.getLogger().info(f' Configuration path is: {path}')
         self._config_path = path
         self._apptoto_api_token = None

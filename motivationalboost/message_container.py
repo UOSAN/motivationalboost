@@ -8,6 +8,11 @@ from .message import Message
 
 class MessageContainer:
     def __init__(self, template_path: Path = Path.cwd() / 'templates'):
+        """
+        Create a MessageContainer instance.
+
+        :param Path template_path: Path to message templates
+        """
         self._container = []
         try:
             with open(str(template_path / 'module1_template.json')) as f:

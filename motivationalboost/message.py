@@ -10,6 +10,15 @@ from .parse_date_time import parse_datetime_string
 
 class Message:
     def __init__(self, content: str, schedule: str, start_date: str, start_time: str, title: str):
+        """
+        Create a Message instance.
+
+        :param str content: The message content
+        :param str schedule: Schedule indicates an offset to `start_date` and `start_time` when the message will be sent
+        :param str start_date: The start date of the event
+        :param str start_time: The start time of the event
+        :param str title: The message title
+        """
         self._content_template = Template(content)
         self._schedule = schedule
         self._start_date_template = Template(start_date)
