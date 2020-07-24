@@ -8,7 +8,7 @@ class TestMessageContainer:
         # Create an empty file in test-controlled path
         template_path = tmp_path / 'templates'
         template_path.mkdir()
-        shutil.copyfile((shared_datadir / 'empty.json'), template_path / 'module1_template.json')
+        shutil.copyfile((shared_datadir / 'empty.json'), template_path / 'message_template.json')
 
         message_container = MessageContainer(template_path=template_path)
 
@@ -26,7 +26,7 @@ class TestMessageContainer:
         # Create a valid file in test-controlled path, and verify that the two messages are read
         template_path = tmp_path / 'templates'
         template_path.mkdir()
-        shutil.copyfile((shared_datadir / 'valid.json'), template_path / 'module1_template.json')
+        shutil.copyfile((shared_datadir / 'valid.json'), template_path / 'message_template.json')
 
         message_container = MessageContainer(template_path=template_path)
 
@@ -36,7 +36,7 @@ class TestMessageContainer:
         # Create a valid file in test-controlled path, and verify the set of placeholders returned
         template_path = tmp_path / 'templates'
         template_path.mkdir()
-        shutil.copyfile((shared_datadir / 'valid.json'), template_path / 'module1_template.json')
+        shutil.copyfile((shared_datadir / 'valid.json'), template_path / 'message_template.json')
 
         message_container = MessageContainer(template_path=template_path)
 

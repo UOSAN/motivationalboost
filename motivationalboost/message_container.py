@@ -15,7 +15,7 @@ class MessageContainer:
         """
         self._container = []
         try:
-            with open(str(template_path / 'module1_template.json')) as f:
+            with open(str(template_path / 'message_template.json')) as f:
                 template_string = json.load(f)
                 for m in template_string['messages']:
                     message = Message(m['content'], m['schedule'], m['start_date'], m['start_time'], m['title'])
