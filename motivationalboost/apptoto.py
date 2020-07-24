@@ -10,6 +10,12 @@ from .apptoto_event import ApptotoEvent
 
 class Apptoto:
     def __init__(self, api_token: str, user: str):
+        """
+        Create an Apptoto instance.
+
+        :param api_token: Apptoto API token
+        :param user: Apptoto user name
+        """
         self._endpoint = 'https://api.apptoto.com/v1'
         self._api_token = api_token
         self._user = user
@@ -19,6 +25,7 @@ class Apptoto:
     def post_events(self, events: List[ApptotoEvent]):
         """
         Post events to the /v1/events API to create events that will send messages to all participants.
+
         :param events: List of events to create
         """
         url = f'{self._endpoint}/events'

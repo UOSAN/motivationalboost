@@ -9,6 +9,12 @@ from .message_container import MessageContainer
 
 class RequestHandler:
     def __init__(self, config: MBConfig, survey_output: Mapping[str, str]):
+        """
+        Create a RequestHandler instance.
+
+        :param MBConfig config: Application configuration
+        :param Mapping[str, str] survey_output: Mapping of placeholders to values from survey output
+        """
         self._config = config
         self._survey_output = survey_output
 
