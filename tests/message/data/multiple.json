@@ -1,0 +1,41 @@
+{
+  "SV_1234": [
+    {
+      "content": "Nice work on those Boosts ${QID03}! You committed to practice Breathe for Baby at ${QID42} on ${QID41} and to chat with me about Early Labor at ${QID48} on ${QID47}. I'll send your Boosts a couple hours before. Thx! -April.",
+      "schedule": "now",
+      "start_date": "${QID41}",
+      "start_time": "${QID42}",
+      "title": "Boost Schedule Summary 1"
+    },
+    {
+      "content": "Hi ${QID03}! Here's your Baby Boost: I commit to practice Breathe for Baby at ${QID42} on ${QID41} because I care about ${QID30} and I want ${QID23} for Baby's birth.",
+      "schedule": "-2h",
+      "start_date": "${QID41}",
+      "start_time": "${QID42}",
+      "title": "Breathe for Baby"
+    }
+  ],
+  "SV_abcd": [
+    {
+      "content": "Nice work on those Boosts ${Q93}! You committed to practice Breathe for Baby at ${Q92} on ${Q91} and to chat with me about Early Labor at ${Q98} on ${Q97}. I'll send your Boosts a couple hours before. Thx! -April.",
+      "schedule": "now",
+      "start_date": "${Q91}",
+      "start_time": "${Q92}",
+      "title": "Boost Schedule Summary 1"
+    },
+    {
+      "content": "Hi ${Q93}! Here's your Baby Boost: I commit to practice Breathe for Baby at ${Q92} on ${Q91} because I care about ${Q90} and I want ${Q93} for Baby's birth.",
+      "schedule": "-2h",
+      "start_date": "${Q91}",
+      "start_time": "${Q92}",
+      "title": "Breathe for Baby"
+    },
+    {
+      "content": "Hi ${Q93}! Here's your Baby Boost: I commit to practice Breathe for Baby at ${Q92} on ${Q91} because I care about ${Q90} and I want ${Q93} for Baby's birth.",
+      "schedule": "-2h",
+      "start_date": "${Q91}",
+      "start_time": "${Q92}",
+      "title": "Breathe for Baby"
+    }
+  ]
+}
