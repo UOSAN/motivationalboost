@@ -1,3 +1,4 @@
+import logging
 from typing import Mapping
 
 from .apptoto import Apptoto
@@ -32,8 +33,12 @@ class RequestHandler:
                 # set the placeholders
                 message.set_placeholders(self._survey_output)
                 # Create an Apptoto event from it
-                events.append(ApptotoEvent(calendar=self._config.get_apptoto_calendar(), title=message.get_title(),
-                                           start_time=message.get_message_time(), end_time=message.get_message_time(),
-                                           content=message.get_content(), participants=[part]))
+                try:
+                    events.append(ApptotoEvent(calendar=self._config.get_apptoto_calendar(), title=message.get_title(),
+                                               start_time=message.get_message_time(), end_time=message.get_message_time(),
+                                               content=message.get_content(), participants=[part]))
+                except KeyError as ke:
+                    logging.getLogger().warning(f'Unable to create message from template because of '
+                                                f'invalid placeholder: {str(ke)}')
         if len(events) > 0:
             apptoto.post_events(events)
