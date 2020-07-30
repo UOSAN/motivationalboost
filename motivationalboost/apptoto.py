@@ -40,6 +40,6 @@ class Apptoto:
         if r.status_code == requests.codes.ok:
             logging.getLogger().info('Posted events to apptoto')
         else:
-            logging.getLogger().info(f'Failed to post events - {str(r.status_code)} - {r.content}')
+            logging.getLogger().info(f'Failed to post events - {str(r.status_code)} - {str(r.content)}')
 
         return r.status_code == requests.codes.ok
