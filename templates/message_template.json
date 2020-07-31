@@ -33,8 +33,8 @@
     {
       "content": "Hey there ${Q03}, Thx again for Boost-making with me! You committed to ${Q35} at ${Q39} on ${Q38} and to chat with me again on ${Q42} at ${Q41}. I'll be in touch soon! -April",
       "schedule": "now",
-      "start_date": "${Q41}",
-      "start_time": "${Q42}",
+      "start_date": "${Q42}",
+      "start_time": "${Q41}",
       "title": "Boost Schedule Summary 1"
     },
     {
@@ -45,16 +45,16 @@
       "title": "Early Labor Activity"
     },
     {
-      "content": "Hiya & here's your Session Boost: I commit to login to Birth Your Way here: <mod 3 link> to chat w/April about protecting Baby from stress during Early Labor at ${Q42} today because I care about ${Q43}.",
+      "content": "Hiya & here's your Session Boost: I commit to login to Birth Your Way here: <mod 3 link> to chat w/April about protecting Baby from stress during Early Labor at ${Q41} today because I care about ${Q43}.",
       "schedule": "-2h",
-      "start_date": "${Q41}",
-      "start_time": "${Q42}",
+      "start_date": "${Q42}",
+      "start_time": "${Q41}",
       "title": "Session 3 (Early Labor - part 2)"
     },
     {
-      "content": "April here again, login here: <mod 3 link> tmrw at ${Q42} so I can teach u that trick for Early Labor. Thx & hope u r well!",
+      "content": "April here again, login here: <mod 3 link> tmrw at ${Q41} so I can teach u that trick for Early Labor. Thx & hope u r well!",
       "schedule": "-1d",
-      "start_date": "${Q41}",
+      "start_date": "${Q42}",
       "start_time": "4:00pm",
       "title": "Boost Schedule Summary 2"
     }
