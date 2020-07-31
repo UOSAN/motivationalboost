@@ -1,3 +1,4 @@
+import copy
 import logging
 from typing import Mapping
 
@@ -36,7 +37,7 @@ class RequestHandler:
                 try:
                     events.append(ApptotoEvent(calendar=self._config.get_apptoto_calendar(), title=message.get_title(),
                                                start_time=message.get_message_time(), end_time=message.get_message_time(),
-                                               content=message.get_content(), participants=[part]))
+                                               content=message.get_content(), participants=[copy.copy(part)]))
                 except KeyError as ke:
                     logging.getLogger().warning(f'Unable to create message from template because of '
                                                 f'invalid placeholder: {str(ke)}')
