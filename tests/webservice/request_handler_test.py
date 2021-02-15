@@ -4,7 +4,7 @@ from motivationalboost.message_container import MessageContainer
 from motivationalboost.message import Message
 
 
-import mock
+import unittest.mock as mock
 
 
 class TestRequestHandler:
