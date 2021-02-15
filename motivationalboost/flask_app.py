@@ -17,6 +17,3 @@ def create_app(test_config=None):
     app.register_blueprint(bp)
 
     return app
-
-
-flask_app = create_app()
