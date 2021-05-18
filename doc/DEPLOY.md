@@ -14,7 +14,7 @@ https://docs.microsoft.com/en-us/azure/app-service/containers/quickstart-python)
 App is configured as:
 
 ```
-az webapp config set --resource-group pnovak2_rg_Linux_westus2 --name motivationalboost --startup-file "gunicorn --bind=0.0.0.0 --timeout 600 \"motivationalboost.flask_app:create_app()\""
+az webapp config set --resource-group sanlab_rg_Linux_westus2 --name motivationalboost --startup-file "gunicorn --bind=0.0.0.0 --timeout 600 \"motivationalboost.flask_app:create_app()\""
 ```
 
 The bit right at the end (`"motivationalboost.flask_app:create_app()"`) specifies how the gunicorn WSGI server should start and run the Flask app in the motivationalboost package.
@@ -24,6 +24,5 @@ Reference: [Configure a Linux Python app for Azure App Service](https://docs.mic
 
 #### Enable logging
 ```
-az webapp log config --resource-group pnovak2_rg_Linux_westus2 --name motivationalboost --docker-container-logging filesystem
+az webapp log config --resource-group sanlab_rg_Linux_westus2 --name motivationalboost --docker-container-logging filesystem
 ```
-
